@@ -9,7 +9,6 @@
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #ffdde1;
-            overflow: hidden;
         }
         .container {
             margin-top: 50px;
@@ -36,93 +35,30 @@
     </style>
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="bg-music" autoplay loop>
-        <source src="https://your-background-song-link.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
     <div class="container">
         <h1 id="question">Will you be my Valentine? ❤️</h1>
         <img id="valentine-img" src="https://your-jumping-bear.gif" alt="Jumping Bear">
         <br>
         
-        <!-- Yes Button with Happy Song -->
+        <!-- Yes and No Buttons -->
         <button class="yes-btn" onclick="yesClicked()">Yes</button>
-        <audio id="yes-sound">
-            <source src="https://your-happy-song-link.mp3" type="audio/mp3">
-        </audio>
-
-        <!-- No Button Moves Away -->
         <button class="no-btn" id="noButton" onmouseover="moveNoButton()">No</button>
     </div>
 
     <script>
         function yesClicked() {
-            // Change text and image
-            document.getElementById("question").innerHTML = "YES! I KNEW IT, UR MINE SHEEEENAAAAA! ❤️🎉";
+            document.getElementById("question").innerHTML = "YAY! ❤️";
             document.getElementById("valentine-img").src = "https://your-holding-flowers-bear.gif";
             document.getElementById("noButton").style.display = "none";
-
-            // Stop background music
-            let bgMusic = document.getElementById("bg-music");
-            if (bgMusic) bgMusic.pause();
-
-            // Play "Happy" song
-            let yesSound = document.getElementById("yes-sound");
-            yesSound.play();
-
-            // Start confetti animation
-            startConfetti();
         }
 
         function moveNoButton() {
             let button = document.getElementById('noButton');
             let x = Math.random() * (window.innerWidth - 100);
             let y = Math.random() * (window.innerHeight - 50);
-
-            // Keep movement at normal speed
-            button.style.transition = "transform 0.3s ease-out";
-            button.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        // Confetti Animation
-        function startConfetti() {
-            let confettiContainer = document.createElement("div");
-            confettiContainer.style.position = "fixed";
-            confettiContainer.style.top = "0";
-            confettiContainer.style.left = "0";
-            confettiContainer.style.width = "100%";
-            confettiContainer.style.height = "100%";
-            confettiContainer.style.pointerEvents = "none";
-            document.body.appendChild(confettiContainer);
-
-            for (let i = 0; i < 100; i++) {
-                let confetti = document.createElement("div");
-                confetti.style.position = "absolute";
-                confetti.style.width = "10px";
-                confetti.style.height = "10px";
-                confetti.style.backgroundColor = randomColor();
-                confetti.style.top = Math.random() * window.innerHeight + "px";
-                confetti.style.left = Math.random() * window.innerWidth + "px";
-                confetti.style.opacity = "0.8";
-                confetti.style.animation = "falling 3s linear infinite";
-                confettiContainer.appendChild(confetti);
-            }
-
-            let style = document.createElement("style");
-            style.innerHTML = `
-                @keyframes falling {
-                    0% { transform: translateY(0) rotate(0deg); }
-                    100% { transform: translateY(100vh) rotate(360deg); }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        function randomColor() {
-            let colors = ["#ff0000", "#ff7300", "#ffeb00", "#0f0", "#00f", "#ff00ff"];
-            return colors[Math.floor(Math.random() * colors.length)];
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
         }
     </script>
 </body>
