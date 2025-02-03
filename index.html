@@ -58,8 +58,6 @@
     </div>
 
     <script>
-        let speedMultiplier = 1.5; // No button moves faster each time
-
         function yesClicked() {
             // Change text and image
             document.getElementById("question").innerHTML = "YES! I KNEW IT, UR MINE SHEEEENAAAAA! ❤️🎉";
@@ -83,12 +81,9 @@
             let x = Math.random() * (window.innerWidth - 100);
             let y = Math.random() * (window.innerHeight - 50);
 
-            // Apply movement with speed multiplier
-            button.style.transition = "transform 0.1s ease-out";
-            button.style.transform = `translate(${x * speedMultiplier}px, ${y * speedMultiplier}px)`;
-
-            // Increase speed multiplier
-            speedMultiplier *= 1.2;
+            // Keep movement at normal speed
+            button.style.transition = "transform 0.3s ease-out";
+            button.style.transform = `translate(${x}px, ${y}px)`;
         }
 
         // Confetti Animation
