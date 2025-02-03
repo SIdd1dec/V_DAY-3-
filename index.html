@@ -11,10 +11,7 @@
             background-color: #ffdde1;
         }
         .container {
-            margin-top: 50px;
-        }
-        #valentine-img {
-            width: 200px;
+            margin-top: 100px;
         }
         button {
             font-size: 20px;
@@ -36,29 +33,21 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="question">Will you be my Valentine? ❤️</h1>
-        <img id="valentine-img" src="https://your-jumping-bear.gif" alt="Jumping Bear">
+        <h1>Will You Be My Valentine? ❤️</h1>
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" width="200px">
         <br>
-        
-        <!-- Yes and No Buttons -->
         <button class="yes-btn" onclick="yesClicked()">Yes</button>
         <button class="no-btn" id="noButton" onmouseover="moveNoButton()">No</button>
     </div>
-
     <script>
         function yesClicked() {
-            document.getElementById("question").innerHTML = "YAY! ❤️";
-            document.getElementById("valentine-img").src = "https://your-holding-flowers-bear.gif";
-            document.getElementById("noButton").style.display = "none";
+            document.body.innerHTML = "<h1>Yay! ❤️</h1><img src='https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif' width='200px'>";
         }
-
         function moveNoButton() {
-            let button = document.getElementById('noButton');
             let x = Math.random() * (window.innerWidth - 100);
             let y = Math.random() * (window.innerHeight - 50);
-            button.style.position = "absolute";
-            button.style.left = `${x}px`;
-            button.style.top = `${y}px`;
+            document.getElementById('noButton').style.left = `${x}px`;
+            document.getElementById('noButton').style.top = `${y}px`;
         }
     </script>
 </body>
